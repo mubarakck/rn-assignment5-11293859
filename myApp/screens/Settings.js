@@ -38,8 +38,8 @@ export default function Settings() {
       <View style={styles.themeContainer}>
         <Text style={styles.themeText}>Theme</Text>
         <Switch
-          trackColor={{ false: "#767577", true: "#81b0ff" }}
-          thumbColor={isDarkTheme ? "#f5dd4b" : "#f4f3f4"}
+          trackColor={{ false: "lightgreen", true: "lightgreen" }}
+          thumbColor={isDarkTheme ? "white" : "white"}
           ios_backgroundColor="#3e3e3e"
           onValueChange={toggleTheme}
           value={isDarkTheme}
@@ -57,6 +57,7 @@ const lightStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    padding: 20,
   },
   header: {
     fontSize: 24,

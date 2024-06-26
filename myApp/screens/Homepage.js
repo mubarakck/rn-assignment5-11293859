@@ -1,4 +1,4 @@
-import { View, ScrollView, Image, StyleSheet, Text, TouchableOpacity } from 'react-native'
+import { View, ScrollView, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, TouchableHighlight } from 'react-native'
 import React, { useContext } from 'react';
 import { ThemeContext } from './ThemeContext';
 
@@ -15,7 +15,7 @@ export default function Homepage() {
         </View>
         <View style={styles.homeTopText}>
           <Text style={styles.welcomeText}>Welcome back,</Text>
-          <Text style={styles.userName}>Eric Atsu</Text>
+          <Text style={styles.userName}>Mubarak Wumpini</Text>
         </View>
         <TouchableOpacity style={styles.searchIcon}>
           <Image source={require('../assets/search.png')} style={styles.searchImage} />
@@ -27,31 +27,50 @@ export default function Homepage() {
       </View>
 
       <View style={styles.actionButtons}>
+
+        <View style={styles.actionButtonContainer}>
         <TouchableOpacity style={styles.actionButton}>
-          <Image source={require('../assets/send.png')} />
+          <Image source={require('../assets/send.png')} style={styles.searchImage}/>
         </TouchableOpacity>
+        <Text style={styles.actionButtonText}>Send</Text>
+        </View>
+
+
+        <View style={styles.actionButtonContainer}>
         <TouchableOpacity style={styles.actionButton}>
-          <Image source={require('../assets/recieve.png')} />
+          <Image source={require('../assets/recieve.png')} style={styles.searchImage} />
         </TouchableOpacity>
+        <Text style={styles.actionButtonText}>Receive</Text>
+        </View>
+
+
+        <View style={styles.actionButtonContainer}>
         <TouchableOpacity style={styles.actionButton}>
-          <Image source={require('../assets/loan.png')} />
+          <Image source={require('../assets/loan.png')} style={styles.searchImage} />
         </TouchableOpacity>
+        <Text style={styles.actionButtonText}>Loan</Text>
+        </View>
+
+        <View style={styles.actionButtonContainer}>
         <TouchableOpacity style={styles.actionButton}>
-          <Image source={require('../assets/topUp.png')} />
+          <Image source={require('../assets/topUp.png')} style={styles.searchImage}/>
         </TouchableOpacity>
+        <Text style={styles.actionButtonText}>topUp</Text>
+        </View>
+        
       </View>
 
       <View style={styles.transactionSection}>
-        <View>
+        <View style={styles.transactionAndSeeAll}>
           <Text style={styles.transactionTitle}>Transaction</Text>
           <TouchableOpacity>
             <Text style={styles.sellAllText}>Sell All</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.transactionItem}>
-          <Image source={require('../assets/apple.png')} />
+          <Image source={require('../assets/apple.png')} style={styles.transactionIcon}  />
           <View style={styles.transactionDetails}>
-            <Text>Apple Store</Text>
+            <Text style={styles.transactionCategory}>Apple Store</Text>
             <Text style={styles.transactionCategory}>Entertainment</Text>
           </View>
           <Text style={styles.transactionAmount}>- $5,99</Text>
@@ -59,7 +78,7 @@ export default function Homepage() {
         <View style={styles.transactionItem}>
           <Image source={require('../assets/spotify.png')} style={styles.transactionIcon} />
           <View style={styles.transactionDetails}>
-            <Text>Spotify</Text>
+            <Text style={styles.transactionCategory}>Spotify</Text>
             <Text style={styles.transactionCategory}>Music</Text>
           </View>
           <Text style={styles.transactionAmount}>- $12,99</Text>
@@ -67,17 +86,19 @@ export default function Homepage() {
         <View style={styles.transactionItem}>
           <Image source={require('../assets/moneyTransfer.png')} style={styles.transactionIcon} />
           <View style={styles.transactionDetails}>
-            <Text>Money Transfer</Text>
+            <Text style={styles.transactionCategory}>Money Transfer</Text>
             <Text style={styles.transactionCategory}>Transaction</Text>
           </View>
-          <Text style={styles.transactionAmount}>$300</Text>
+          <TouchableOpacity>
+          <Text style={styles.sellAllText}>$300</Text>
+          </TouchableOpacity>
         </View>
 
 
         <View style={styles.transactionItem}>
           <Image source={require('../assets/grocery.png')} style={styles.transactionIcon} />
           <View style={styles.transactionDetails}>
-            <Text>Grocery</Text>
+            <Text style={styles.transactionCategory}>Grocery</Text>
             <Text style={styles.transactionCategory}>FoodStuff</Text>
           </View>
           <Text style={styles.transactionAmount}>$8,88</Text>
@@ -87,7 +108,7 @@ export default function Homepage() {
         <View style={styles.transactionItem}>
           <Image source={require('../assets/grocery.png')} style={styles.transactionIcon} />
           <View style={styles.transactionDetails}>
-            <Text>Grocery</Text>
+            <Text style={styles.transactionCategory}>Grocery</Text>
             <Text style={styles.transactionCategory}>FoodStuff</Text>
           </View>
           <Text style={styles.transactionAmount}>$8,88</Text>
@@ -101,13 +122,13 @@ export default function Homepage() {
 const lightStyles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 50,
     backgroundColor: '#FFF',
   },
   homeTop: {
     flexDirection: 'row',
     padding: 20,
     alignItems: 'center',
+    marginTop: 50,
   },
   profileImage: {
     width: 50,
@@ -127,10 +148,15 @@ const lightStyles = StyleSheet.create({
   },
   searchIcon: {
     marginLeft: 'auto',
+    backgroundColor: '#f0f0f0',
+    borderRadius: 30,
+    height: 55,
+    width: 55,
   },
   searchImage: {
-    width: 24,
-    height: 24,
+    width: 27,
+    height: 30,
+    margin: 'auto',
   },
   cardContainer: {
     alignItems: 'center',
@@ -146,6 +172,9 @@ const lightStyles = StyleSheet.create({
     justifyContent: 'space-around',
     marginVertical: 20,
   },
+  actionButtonContainer: {
+    alignItems: 'center',
+  },
   actionButton: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -154,8 +183,17 @@ const lightStyles = StyleSheet.create({
     borderRadius: 30,
     backgroundColor: '#f0f0f0',
   },
+  actionButtonText: {
+    marginTop: 5,
+    fontSize: 14,
+    color: '#000',
+  },
   transactionSection: {
     paddingHorizontal: 20,
+    marginTop: 40,
+  },
+  transactionAndSeeAll:{
+flexDirection: 'row',
   },
   transactionTitle: {
     fontSize: 18,
@@ -164,6 +202,7 @@ const lightStyles = StyleSheet.create({
   sellAllText: {
     color: '#007bff',
     textAlign: 'right',
+    marginLeft: 190,
   },
   transactionItem: {
     flexDirection: 'row',
@@ -190,13 +229,13 @@ const lightStyles = StyleSheet.create({
   const darkStyles = StyleSheet.create({
     container: {
       flex: 1,
-      marginTop: 50,
-      backgroundColor: '#000', // Dark background color
+      backgroundColor: '#000', 
     },
     homeTop: {
       flexDirection: 'row',
       padding: 20,
       alignItems: 'center',
+      marginTop: 50,
     },
     profileImage: {
       width: 50,
@@ -208,20 +247,26 @@ const lightStyles = StyleSheet.create({
     },
     welcomeText: {
       fontSize: 16,
-      color: '#bbb', // Lighter color for text
+      color: '#bbb', 
     },
     userName: {
       fontSize: 20,
       fontWeight: 'bold',
-      color: '#fff', // White color for text
+      color: '#fff', 
     },
     searchIcon: {
       marginLeft: 'auto',
+      marginLeft: 'auto',
+      backgroundColor: '#545c56',
+      borderRadius: 30,
+      height: 55,
+      width: 55,
     },
     searchImage: {
       width: 24,
       height: 24,
-      tintColor: '#fff', // White color for icon
+      tintColor: '#fff', 
+      margin: 'auto',
     },
     cardContainer: {
       alignItems: 'center',
@@ -236,6 +281,7 @@ const lightStyles = StyleSheet.create({
       flexDirection: 'row',
       justifyContent: 'space-around',
       marginVertical: 20,
+      marginBottom: 50,
     },
     actionButton: {
       alignItems: 'center',
@@ -245,8 +291,16 @@ const lightStyles = StyleSheet.create({
       borderRadius: 30,
       backgroundColor: '#333', // Darker background color
     },
+    actionButtonText: {
+      marginTop: 5,
+      fontSize: 14,
+      color: '#fff',
+    },
     transactionSection: {
       paddingHorizontal: 20,
+    },
+    transactionAndSeeAll:{
+      flexDirection: 'row',
     },
     transactionTitle: {
       fontSize: 18,
@@ -256,6 +310,7 @@ const lightStyles = StyleSheet.create({
     sellAllText: {
       color: '#007bff', // Same color as light theme for consistency
       textAlign: 'right',
+      marginLeft: 190,
     },
     transactionItem: {
       flexDirection: 'row',
@@ -264,16 +319,18 @@ const lightStyles = StyleSheet.create({
     },
     transactionIcon: {
       marginRight: 20,
+      tintColor: '#fff',
     },
     transactionDetails: {
       flex: 1,
       marginLeft: 10,
     },
     transactionCategory: {
-      color: '#bbb', // Lighter color for text
+      color: 'white', 
+      
     },
     transactionAmount: {
       fontWeight: 'bold',
-      color: '#fff', // White color for text
+      color: '#fff', 
     },
   });
