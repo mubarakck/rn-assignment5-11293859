@@ -1,8 +1,11 @@
 import { View, ScrollView, Image, StyleSheet, Text, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react';
+import { ThemeContext } from './ThemeContext';
 
-export default function Homepage({ isEnabled }) {
-  const styles = isEnabled ? darkStyles : lightStyles;
+export default function Homepage() {
+  const { isDarkTheme } = useContext(ThemeContext);
+  
+  const styles = isDarkTheme ? darkStyles : lightStyles;
 
   return (
     <ScrollView style={styles.container}>
@@ -69,6 +72,8 @@ export default function Homepage({ isEnabled }) {
           </View>
           <Text style={styles.transactionAmount}>$300</Text>
         </View>
+
+
         <View style={styles.transactionItem}>
           <Image source={require('../assets/grocery.png')} style={styles.transactionIcon} />
           <View style={styles.transactionDetails}>
@@ -77,6 +82,17 @@ export default function Homepage({ isEnabled }) {
           </View>
           <Text style={styles.transactionAmount}>$8,88</Text>
         </View>
+
+
+        <View style={styles.transactionItem}>
+          <Image source={require('../assets/grocery.png')} style={styles.transactionIcon} />
+          <View style={styles.transactionDetails}>
+            <Text>Grocery</Text>
+            <Text style={styles.transactionCategory}>FoodStuff</Text>
+          </View>
+          <Text style={styles.transactionAmount}>$8,88</Text>
+        </View>
+
       </View>
     </ScrollView>
   );
@@ -261,81 +277,3 @@ const lightStyles = StyleSheet.create({
       color: '#fff', // White color for text
     },
   });
-  
-
-    /*
-    <ScrollView style={styles.container}>
-      
-          <View style={styles.homeTop}>
-
-            <View>
-              <TouchableOpacity>
-            <Image source={require('../assets/profile.png')}/> 
-            </TouchableOpacity>
-            </View>
-
-          <View style={styles.homeTopText}>
-            <Text>Welcome Back</Text>
-            <Text>Mubarak Wumpini</Text>
-          </View>
-
-          <View style={styles.homeTopV}>
-            <TouchableOpacity>
-            <View style={styles.homeTopView}><Image source={require('../assets/search.png')} styles={styles.searchImage}/> </View>
-          
-          </TouchableOpacity>
-          </View>
-          
-      </View>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </ScrollView>
-    
-  )
-}
-
-
-const styles = StyleSheet.create({
-container: {
-flex: 1,
-marginTop: 50,
-backgroundColor: '#FFFF'
-},
-homeTop: {
-  flexDirection: "row",
-  padding: 20,
-},
-  homeTopText:{
-    marginLeft: 20,
-    marginTop: 10,
-  },
-  homeTopView:{
-    borderRadius: 100,
-    backgroundColor: "#edebeb",
-    alignItems: 'center',
-    marginLeft: 120,
-    justifyContent: "center",
-    width: 50,
-    height: 50,
-  },
- 
-
-
-});
-
-*/

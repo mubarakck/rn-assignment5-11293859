@@ -1,12 +1,11 @@
 import { View, Text, StyleSheet, TouchableOpacity, Switch } from 'react-native';
-import React, { useState } from 'react';
-import Homepage from './Homepage';
+import React, { useContext, useState } from 'react';
+import { ThemeContext } from './ThemeContext';
 
 export default function Settings() {
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  const { isDarkTheme, toggleTheme } = useContext(ThemeContext);
+  const styles = isDarkTheme ? darkStyles : lightStyles;
 
-  const styles = isEnabled ? darkStyles : lightStyles;
 
   return (
     <View style={styles.container}>
@@ -40,10 +39,10 @@ export default function Settings() {
         <Text style={styles.themeText}>Theme</Text>
         <Switch
           trackColor={{ false: "#767577", true: "#81b0ff" }}
-          thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+          thumbColor={isDarkTheme ? "#f5dd4b" : "#f4f3f4"}
           ios_backgroundColor="#3e3e3e"
-          onValueChange={toggleSwitch}
-          value={isEnabled}
+          onValueChange={toggleTheme}
+          value={isDarkTheme}
         />
       </View>
 
@@ -58,7 +57,6 @@ const lightStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    padding: 20,
   },
   header: {
     fontSize: 24,

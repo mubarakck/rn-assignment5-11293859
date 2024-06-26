@@ -6,13 +6,14 @@ import  Homepage from '../screens/Homepage';
 import  MyCards from '../screens/MyCards';
 import  Statistics from '../screens/Statistics';
 import  Settings from '../screens/Settings';
-
+import { ThemeProvider } from '../screens/ThemeContext';
 
 const Tab = createBottomTabNavigator();
 
 
 export default function TabNavigator() {
     return (
+        <ThemeProvider>
 <NavigationContainer>
 
     <Tab.Navigator>
@@ -78,5 +79,6 @@ export default function TabNavigator() {
 
     </Tab.Navigator>
  </NavigationContainer>
+ </ThemeProvider>
 
 )};

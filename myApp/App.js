@@ -1,22 +1,16 @@
-import { StyleSheet, Image, Text, View } from 'react-native';
 import TabNavigator from './components/TabNavigator';
+import { ThemeProvider } from './screens/ThemeContext';
 
 
 export default function App() {
   return (
 
-    
-
-<TabNavigator/>
-
-    
- 
+    <ThemeProvider>
+      <TabNavigator/>
+    </ThemeProvider>
 
   
     
 
 
   )};
-
-
-
